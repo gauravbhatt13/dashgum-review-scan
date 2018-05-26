@@ -28,7 +28,16 @@ app.config(['$httpProvider','$stateProvider', '$urlRouterProvider', function($ht
         templateUrl: 'scan.html',
         controller: 'scannedCtrl'
     };
+
+    var contactState = {
+        name: 'contact',
+        url: '/contact',
+        templateUrl: 'contact.html',
+        controller: 'contactCtrl'
+    };
+
     $stateProvider.state(homeState);
     $stateProvider.state(scannedState);
+    $stateProvider.state(contactState);
 
 }]);

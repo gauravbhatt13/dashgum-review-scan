@@ -31,3 +31,18 @@ app.service('analyzeService', function ($http, $q) {
         return analyzedData;
     };
 });
+
+app.service('contactService', function ($http) {
+    this.submitContact = function (contact) {
+        $http({
+            method: 'POST',
+            url: '/contact',
+            data: contact,
+            headers: {'Content-Type': 'application/json'}
+        }).then(function (response) {
+            deferred.resolve(response.data);
+        }, function (error) {
+            deferred.reject(error);
+        });
+    };
+});

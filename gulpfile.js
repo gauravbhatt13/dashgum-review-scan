@@ -60,14 +60,13 @@ gulp.task('vendor', function () {
 // Minify JavaScript
 gulp.task('js:minify', function () {
     return gulp.src([
-        './js/*.js',
-        '!./js/*.min.js'
+        './public/js/appjs/*.js'
     ])
         .pipe(uglify())
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('./js'))
+        .pipe(gulp.dest('./js/appjs'))
         .pipe(browserSync.stream());
 });
 
@@ -87,9 +86,9 @@ gulp.task('browserSync', ['nodemon'], function () {
 
 // Dev task
 gulp.task('dev', ['js', 'browserSync'], function () {
-    gulp.watch('./stylesheets/*.css');
-    gulp.watch('./js/*.js', ['js']);
-    gulp.watch('./*.html', browserSync.reload);
+    gulp.watch('./public/stylesheets/*.css');
+    gulp.watch('./public/js/appjs/*.js', ['js']);
+    gulp.watch('./public/*.*', browserSync.reload);
 });
 
 gulp.task('nodemon', function (cb) {

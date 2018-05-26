@@ -63,3 +63,9 @@ app.controller('scannedCtrl', function ($scope, analyzeService) {
     $scope.useTransition = analyzedData.useTransition;
     $scope.reviewCollection = analyzedData.reviews;
 });
+
+app.controller('contactCtrl', function ($scope, contactService) {
+    var submitContact = function () {
+
+    };
+});
