@@ -87,8 +87,9 @@ gulp.task('browserSync', ['nodemon'], function () {
 // Dev task
 gulp.task('dev', ['js', 'browserSync'], function () {
     gulp.watch('./public/stylesheets/*.css');
-    gulp.watch('./public/js/appjs/*.js', ['js']);
-    gulp.watch('./public/*.*', browserSync.reload);
+    gulp.watch('./public/assets/css/*.css', browserSync.reload);
+    gulp.watch('./public/js/appjs/*.js', ['js', browserSync.reload]);
+    gulp.watch('./public/*.html', browserSync.reload);
 });
 
 gulp.task('nodemon', function (cb) {
