@@ -71,10 +71,10 @@ gulp.task('js:minify', function () {
 });
 
 // JS
-gulp.task('js', ['js:minify']);
+//gulp.task('js', ['js:minify']);
 
 // Default task
-gulp.task('default', ['js', 'vendor']);
+gulp.task('default', ['vendor']);
 
 // Configure the browserSync task
 gulp.task('browserSync', ['nodemon'], function () {
@@ -85,10 +85,10 @@ gulp.task('browserSync', ['nodemon'], function () {
 });
 
 // Dev task
-gulp.task('dev', ['js', 'browserSync'], function () {
+gulp.task('dev', ['browserSync'], function () {
     gulp.watch('./public/stylesheets/*.css');
     gulp.watch('./public/assets/css/*.css', browserSync.reload);
-    gulp.watch('./public/js/appjs/*.js', ['js', browserSync.reload]);
+    gulp.watch('./public/js/appjs/*.js', browserSync.reload);
     gulp.watch('./public/*.html', browserSync.reload);
 });
 

@@ -11,7 +11,7 @@ app.controller('analyzeCtrl', function ($scope, analyzeService, usSpinnerService
                 // check if the property/key is defined in the object itself, not in parent
                 if (data.wordDict.hasOwnProperty(key)) {
                     word.text = key;
-                    word.size = data.wordDict[key] * 10;
+                    word.size = data.wordDict[key] * 5;
                 }
                 wordCloud.push(word);
             }
@@ -23,20 +23,18 @@ app.controller('analyzeCtrl', function ($scope, analyzeService, usSpinnerService
             rowData.starRatings = data.starRatings;
             analyzedData.rowCollection = [rowData];
             analyzedData.words = wordCloud;
-            analyzedData.height = 300;
+            analyzedData.height = 400;
             analyzedData.width = 300;
-            analyzedData.wordClicked = wordClicked;
             analyzedData.rotate = rotate;
+            analyzedData.random = random;
             analyzedData.useTooltip = true;
             analyzedData.useTransition = true;
             analyzedData.reviews = data.reviews;
-            //$scope.showWordCloud=true;
             usSpinnerService.stop('spinner-1');
             analyzeService.setAnalyzedData(analyzedData);
             $state.go('scanned');
 
         });
-        $scope.random = random;
 
         function random() {
             return 0.4; // a constant value here will ensure the word position is fixed upon each page refresh.
@@ -45,23 +43,28 @@ app.controller('analyzeCtrl', function ($scope, analyzeService, usSpinnerService
         function rotate() {
             return ~~(Math.random() * 2) * 1;
         }
-
-        function wordClicked(word) {
-            alert('text: ' + word.text + ',size: ' + word.size);
-        }
     }
 });
 app.controller('scannedCtrl', function ($scope, analyzeService) {
     var analyzedData = analyzeService.getAnalyzedData();
+    $scope.query = '';
     $scope.rowCollection = analyzedData.rowCollection;
     $scope.words = analyzedData.words;
     $scope.height = analyzedData.height;
     $scope.width = analyzedData.width;
-    $scope.wordClicked = analyzedData.wordClicked;
     $scope.rotate = analyzedData.rotate;
+    $scope.random = analyzedData.random;
     $scope.useTooltip = analyzedData.useTooltip;
     $scope.useTransition = analyzedData.useTransition;
     $scope.reviewCollection = analyzedData.reviews;
+    $scope.resetFilter = function(){
+        $scope.query = '';
+    };
+    $scope.wordClicked = function(word) {
+        $scope.$apply(function () {
+            $scope.query = word.text;
+        });
+    }
 });
 
 app.controller('contactCtrl', function ($scope, contactService) {

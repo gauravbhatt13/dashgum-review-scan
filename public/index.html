@@ -31,20 +31,40 @@
 </head>
 <body ng-app="reviewScan">
 <section id="container" >
-    <header class="header black-bg">
-        <div class="sidebar-toggle-box">
-            <!--<div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>-->
-            <div class="fa fa-bars tooltips" data-placement="right"></div>
-        </div>
-        <a href="index.html" class="logo"><b>Tipdia</b></a>
+    <!-- <header class="header black-bg"-->
+    <header>
+    <!--
+         <div class="sidebar-toggle-box">
+             &lt;!&ndash;<div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>&ndash;&gt;
+             <div class="fa fa-bars tooltips" data-placement="right"></div>
+         </div>
+         <a href="index.html" class="logo"><b>Tipdia</b></a>-->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" ui-sref="home">Tipdia</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a ui-sref="home">Dashboard</a></li>
+                        <li><a ui-sref="contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
-    <aside>
+    <!--<aside>
         <div id="sidebar"  class="nav-collapse ">
-            <!-- sidebar menu start-->
+            &lt;!&ndash; sidebar menu start&ndash;&gt;
             <ul class="sidebar-menu" id="nav-accordion">
 
-                <!--<p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                <h5 class="centered">Marcel Newman</h5>-->
+                &lt;!&ndash;<p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                <h5 class="centered">Marcel Newman</h5>&ndash;&gt;
 
                 <li class="mt">
                     <a class="active" ui-sref="home">
@@ -61,9 +81,9 @@
                 </li>
 
             </ul>
-            <!-- sidebar menu end-->
+            &lt;!&ndash; sidebar menu end&ndash;&gt;
         </div>
-    </aside>
+    </aside>-->
     <section id="main-content">
         <section class="wrapper">
             <div ui-view=""></div>

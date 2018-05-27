@@ -41,3 +41,18 @@ app.config(['$httpProvider','$stateProvider', '$urlRouterProvider', function($ht
     $stateProvider.state(contactState);
 
 }]);
+
+app.directive('searchWatchModel',function(){
+    return {
+        require:'^stTable',
+        scope:{
+            searchWatchModel:'='
+        },
+        link:function(scope, ele, attr, ctrl){
+            scope.$watch('searchWatchModel',function(val){
+                ctrl.search(val);
+            });
+
+        }
+    };
+});

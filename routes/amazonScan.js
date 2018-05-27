@@ -63,12 +63,18 @@ var callback = function ($, res, pageCount) {
     }
 };
 var handleFewReviews = function (req, res) {
-    var baseUrl = 'https://www.amazon.in';
+    var baseUrl = '';
     console.log(req.body.url);
+    if(req.body.url.includes('amazon.in')){
+        baseUrl = 'https://www.amazon.in';
+    }else{
+        baseUrl = 'https://www.amazon.com';
+    }
+
     request(req.body.url, function (error, response, html) {
         if (!error && response.statusCode == 200) {
             var $ = cheerio.load(html);
-            if($('a[id="acrCustomerReviewLink"]').attr('href') != undefined){
+            if($('a[data-hook="see-all-reviews-link"]').attr('href') != undefined){
 
                 var allReviews = baseUrl + $('a[id="acrCustomerReviewLink"]').attr('href');
                 triggerSearch(baseUrl, allReviews, res, callback);
@@ -109,7 +115,7 @@ var createReviews = function ($, element) {
     //review.date = $(element).children().eq(1).children('span[data-hook="review-date"]').text();
     review.comment = $(element).children().eq(3).children('span[data-hook="review-body"]').text();
     reviews.push(review);
-    aggregateReviews = aggregateReviews.concat(review.title.concat(' ' + review.comment));
+    aggregateReviews = aggregateReviews.concat(review.title.concat(' ').concat(review.comment).concat(' '));
 };
 
 module.exports = router;
