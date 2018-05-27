@@ -24,7 +24,7 @@ app.controller('analyzeCtrl', function ($scope, analyzeService, usSpinnerService
             analyzedData.rowCollection = [rowData];
             analyzedData.words = wordCloud;
             analyzedData.height = 300;
-            analyzedData.width = 400;
+            analyzedData.width = 300;
             analyzedData.wordClicked = wordClicked;
             analyzedData.rotate = rotate;
             analyzedData.useTooltip = true;
