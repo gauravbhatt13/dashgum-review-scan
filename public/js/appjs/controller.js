@@ -1,10 +1,12 @@
 var app = angular.module('reviewScan');
-app.controller('analyzeCtrl', function ($scope, analyzeService, usSpinnerService, $state) {
+app.controller('analyzeCtrl', function ($scope, analyzeService, $state) {
     $scope.url = '';
+    $scope.spinner = false;
     $scope.scan = function () {
         $scope.rowCollection = [];
-        usSpinnerService.spin('spinner-1');
+        $scope.spinner = true;
         analyzeService.analyze($scope.url).then(function (data) {
+            $scope.spinner = false;
             var wordCloud = [];
             for (var key in data.wordDict) {
                 var word = {};
@@ -30,7 +32,6 @@ app.controller('analyzeCtrl', function ($scope, analyzeService, usSpinnerService
             analyzedData.useTooltip = true;
             analyzedData.useTransition = true;
             analyzedData.reviews = data.reviews;
-            usSpinnerService.stop('spinner-1');
             analyzeService.setAnalyzedData(analyzedData);
             $state.go('scanned');
 

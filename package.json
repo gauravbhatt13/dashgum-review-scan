@@ -10,7 +10,6 @@
     "angular": "^1.7.0",
     "angular-d3-word-cloud": "^0.5.3",
     "angular-smart-table": "^2.1.11",
-    "angular-spinner": "^1.0.1",
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
     "cookie-parser": "~1.4.3",
