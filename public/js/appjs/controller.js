@@ -68,7 +68,13 @@ app.controller('scannedCtrl', function ($scope, analyzeService) {
 });
 
 app.controller('contactCtrl', function ($scope, contactService) {
-    var submitContact = function () {
-
+    $scope.contact = {};
+    $scope.success = false;
+    $scope.submitContact = function () {
+        $scope.success = false;
+        contactService.submitContact($scope.contact).then(function (data) {
+            $scope.contact = {};
+            $scope.success = true;
+        });
     };
 });

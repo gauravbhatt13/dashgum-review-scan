@@ -6,9 +6,9 @@ var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
 var scanRouter = require('./routes/amazonScan');
 var flipkartRouter = require('./routes/flipkartScan');
+
 
 var app = express();
 

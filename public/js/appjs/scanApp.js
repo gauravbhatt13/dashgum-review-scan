@@ -36,10 +36,16 @@ app.config(['$httpProvider','$stateProvider', '$urlRouterProvider', function($ht
         controller: 'contactCtrl'
     };
 
+    var aboutState = {
+        name: 'about',
+        url: '/about',
+        templateUrl: 'about.html'
+    };
+
     $stateProvider.state(homeState);
     $stateProvider.state(scannedState);
     $stateProvider.state(contactState);
-
+    $stateProvider.state(aboutState);
 }]);
 
 app.directive('searchWatchModel',function(){

@@ -3,8 +3,8 @@ app.service('analyzeService', function ($http, $q) {
     var analyzedData = {};
 
     this.analyze = function (url) {
-        var analyzedData = undefined;
-        if(!analyzedData){
+        var analysisResponse = undefined;
+        if(!analysisResponse){
             var deferred = $q.defer();
 
             var postMsg = {url:url};
@@ -18,9 +18,9 @@ app.service('analyzeService', function ($http, $q) {
             }, function (error) {
                 deferred.reject(error);
             });
-            analyzedData = deferred.promise;
+            analysisResponse = deferred.promise;
         }
-        return $q.when(analyzedData);
+        return $q.when(analysisResponse);
     };
 
     this.setAnalyzedData = function (data) {
@@ -32,11 +32,14 @@ app.service('analyzeService', function ($http, $q) {
     };
 });
 
-app.service('contactService', function ($http) {
+app.service('contactService', function ($http, $q) {
     this.submitContact = function (contact) {
+        var deferred = $q.defer();
+        var contactResponse = undefined;
+
         $http({
             method: 'POST',
-            url: '/contact',
+            url: '/users/contact',
             data: contact,
             headers: {'Content-Type': 'application/json'}
         }).then(function (response) {
@@ -44,5 +47,7 @@ app.service('contactService', function ($http) {
         }, function (error) {
             deferred.reject(error);
         });
+        contactResponse = deferred.promise;
+        return $q.when(contactResponse);
     };
 });
