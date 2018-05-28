@@ -19,6 +19,16 @@ var banner = ['/*!\n',
 
 // Copy third party libraries from /node_modules into./public/vendor
 gulp.task('vendor', function () {
+    //Angular chart
+    gulp.src([
+        './node_modules/angular-chart.js/dist/angular-chart.js'
+    ])
+        .pipe(gulp.dest('./public/vendor/angular-chart.js'))
+
+    gulp.src([
+        './node_modules/chart.js/dist/Chart.js'
+    ])
+        .pipe(gulp.dest('./public/vendor/chart.js'))
     //UI Router
     gulp.src([
         './node_modules/@uirouter/angularjs/release/angular-ui-router.js'
@@ -29,11 +39,7 @@ gulp.task('vendor', function () {
         './node_modules/angular-smart-table/dist/smart-table.js'
     ])
         .pipe(gulp.dest('./public/vendor/angular-smart-table'))
-    //Angular Spinner
-    gulp.src([
-        './node_modules/angular-spinner/dist/angular-spinner.js'
-    ])
-        .pipe(gulp.dest('./public/vendor/angular-spinner'))
+
     //d3
     gulp.src([
         './node_modules/d3/build/d3.js'

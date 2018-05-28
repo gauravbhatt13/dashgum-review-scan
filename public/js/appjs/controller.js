@@ -48,6 +48,7 @@ app.controller('analyzeCtrl', function ($scope, analyzeService, $state) {
 });
 app.controller('scannedCtrl', function ($scope, analyzeService) {
     var analyzedData = analyzeService.getAnalyzedData();
+    $scope.labels = ["Positive", "Negative"];
     $scope.query = '';
     $scope.rowCollection = analyzedData.rowCollection;
     $scope.words = analyzedData.words;
@@ -58,6 +59,17 @@ app.controller('scannedCtrl', function ($scope, analyzeService) {
     $scope.useTooltip = analyzedData.useTooltip;
     $scope.useTransition = analyzedData.useTransition;
     $scope.reviewCollection = analyzedData.reviews;
+    var positive = 0;
+
+    analyzedData.reviews.forEach(function (review) {
+        if(review.score > 0){
+            positive++;
+        }
+    });
+
+
+    $scope.chartData = [positive, analyzedData.reviews.length - positive];
+
     $scope.resetFilter = function(){
         $scope.query = '';
     };

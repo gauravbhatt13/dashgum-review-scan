@@ -24,13 +24,18 @@
             <div class="col-md-12">
                 <!--<img class="img-fluid mb-5 d-block mx-auto" src="img/profile.png" alt="" ng-if="!showWordCloud">-->
                 <div class="row">
-                    <div class="col-md-12 text-center">
+                    <div class="col-md-6 text-center">
                         <div id="wordsCloud" class="img-fluid">
                             <word-cloud words="words" width="width" height="height" padding="5"
                                         rotate="rotate" use-tooltip="useTooltip" random="random"
                                         use-transition="useTransition" on-click="wordClicked">
                             </word-cloud>
                         </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <canvas id="doughnut" class="chart chart-doughnut"
+                                chart-data="chartData" chart-labels="labels">
+                        </canvas>
                     </div>
                 </div>
             </div>
@@ -45,12 +50,6 @@
                         <th>Title</th>
                         <th>Comment</th>
                     </tr>
-                  <!--  <tr>
-                        <th colspan="5"><input st-input-event="input" st-search="" class="form-control" placeholder="review search ..."
-                                               type="search"/></th>
-
-
-                    </tr>-->
                     </thead>
                     <tbody>
                     <tr>

@@ -114,6 +114,8 @@ var createReviews = function ($, element) {
     review.title = $(element).children().eq(0).children('a[data-hook="review-title"]').text();
     //review.date = $(element).children().eq(1).children('span[data-hook="review-date"]').text();
     review.comment = $(element).children().eq(3).children('span[data-hook="review-body"]').text();
+    var sentimentAnalysis = sentiment.analyze(review.comment);
+    review.score = sentimentAnalysis.score;
     reviews.push(review);
     aggregateReviews = aggregateReviews.concat(review.title.concat(' ').concat(review.comment).concat(' '));
 };
