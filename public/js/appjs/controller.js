@@ -50,6 +50,7 @@ app.controller('analyzeCtrl', function ($scope, analyzeService, $state) {
 app.controller('scannedCtrl', function ($scope, analyzeService) {
     var analyzedData = analyzeService.getAnalyzedData();
     $scope.labels = ["Positive", "Negative"];
+    $scope.chartColors = ['#46BFBD', '#F7464A', '#00ADF9', '#803690', '#FDB45C', '#949FB1', '#4D5360'];
     $scope.query = '';
     $scope.rowCollection = analyzedData.rowCollection;
     $scope.words = analyzedData.words;

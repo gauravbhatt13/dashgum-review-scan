@@ -1,5 +1,6 @@
 var app = angular.module('reviewScan',['angular-d3-word-cloud', 'smart-table', 'ui.router', 'chart.js']);
 app.config(['$httpProvider','$stateProvider', '$urlRouterProvider', function($httpProvider, $stateProvider, $urlRouterProvider) {
+
     //initialize get if not there
     if (!$httpProvider.defaults.headers.get) {
         $httpProvider.defaults.headers.get = {};
