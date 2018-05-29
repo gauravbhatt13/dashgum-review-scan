@@ -5,6 +5,7 @@ app.controller('analyzeCtrl', function ($scope, analyzeService, $state) {
     $scope.scan = function () {
         $scope.rowCollection = [];
         $scope.spinner = true;
+        $scope.url = $scope.url.slice($scope.url.indexOf("https"));
         analyzeService.analyze($scope.url).then(function (data) {
             $scope.spinner = false;
             var wordCloud = [];
