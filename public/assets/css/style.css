@@ -12,7 +12,7 @@ Premium: http://www.gridgum.com
 /* BASIC THEME CONFIGURATION */
 body {
     color: #000000;
-	background: #FFFFFF;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
     font-family: 'Ruda', sans-serif;
     padding: 0px !important;
     margin: 0px !important;
