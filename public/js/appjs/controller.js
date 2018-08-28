@@ -207,22 +207,18 @@ app.controller('BlogsController',
             console.log(blog);
             $state.go('showBlog', {blog:blog})
         };
-        setTimeout(function () {
-            for (var key in MockData) {
+        MockData['$promise'].then(function (data) {
+            console.log(data);
+            for (var key in data) {
                 console.log('for key : ' + key + ' : ' + MockData[key].blogCategory + ' === ' + $scope.category);
                 if (MockData[key].blogCategory === $scope.category) {
                     $scope.data = MockData[key].blogs;
-                    $scope.$apply();
                     break;
                 }
             }
-        }, 500);
+        });
     });
 app.controller('ShowBlogController',
     function ($log, $stateParams, $scope) {
-        setTimeout(function () {
-            $scope.blog = $stateParams.blog;
-            console.log($scope.blog);
-            $scope.$apply();
-        }, 200);
+        $scope.blog = $stateParams.blog;
     });
