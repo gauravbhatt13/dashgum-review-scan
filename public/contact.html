@@ -6,7 +6,7 @@
         </div>
         <div class="contact-section">
             <div class="container">
-                <form>
+                <form class="row">
                     <div class="col-md-6 form-line">
                         <div class="form-group">
                             <label for="inputUsername">Your name</label>
@@ -26,13 +26,16 @@
                             <label for ="description"> Message</label>
                             <textarea  class="form-control" id="description" placeholder="Enter Your Message" ng-model="contact.message"></textarea>
                         </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-md-12">
                         <div>
-
-                            <button type="button" class="btn btn-primary submit" ng-click="submitContact()"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
+                            <button type="button" class="btn btn-primary submit black-white-color" ng-click="submitContact()"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
                         </div>
 
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div><!-- col-lg-12-->

@@ -2,9 +2,12 @@
     <h1>{{category}}</h1>
     <div class="row">
         <div class="col-md-12">
-            <div heading="{{blog.blogTitle}}" ng-repeat="blog in data" is-open="true">
+            <div ng-repeat="blog in data">
+                <div class="blog-heading">
+                    {{blog.blogTitle}}
+                </div>
                 {{blog.blogDescription}}
-                <button class="btn btn-primary btn-xs" ng-click="gotoBlog(blog)">Read More..</button>
+                <button style="background-color: black;color: white" class="btn btn-primary btn-xs" ng-click="gotoBlog(blog)">Read More..</button>
             </div>
         </div>
     </div>

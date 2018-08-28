@@ -8,10 +8,10 @@
           <div class="form-group">
             <textarea id="jsonTxt" class="form-control" ng-model="jsonTxt" rows="25"></textarea><br/>
             <div class="pull-right">
-              <button class="btn btn-primary" ng-click="flatJson()" data-toggle="modal" data-target="#flatModal">
+              <button class="btn btn-primary black-white-color" ng-click="flatJson()" data-toggle="modal" data-target="#flatModal">
                 <label>Flat</label>
               </button>
-              <button class="btn btn-primary" ng-click="formatJson()" data-toggle="modal" data-target="#errorModal">
+              <button class="btn btn-primary black-white-color" ng-click="formatJson()" data-toggle="modal" data-target="#errorModal">
                 <label>Format</label>
               </button>
             </div>
@@ -34,7 +34,7 @@
         </div>
         <div class="modal-body container">
           <div style="margin-bottom: 20px">
-            <button class="btn btn-link" ng-click="showES = (showES ? false : true)">Toggle Index</button>
+            <button class="btn btn-link black-white-color" ng-click="showES = (showES ? false : true)">Toggle Index</button>
           </div>
           <div class="row" ng-if="showES" ng-init="showES = false">
               <div class="col-md-12">
@@ -51,7 +51,7 @@
                       <input id="indexType" type="text" class="form-control" ng-model="indexType"/>
                   </div>
                   <div class="form-group">
-                      <button type="button" class="btn btn-primary" ng-click="createIndex();">Index</button>
+                      <button type="button" class="btn btn-primary black-white-color" ng-click="createIndex();">Index</button>
                   </div>
               </div>
           </div>
@@ -91,7 +91,7 @@
               </table>
               <div class="row">
                 <div class="col-md-12">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary black-white-color" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>

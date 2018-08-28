@@ -2244,5 +2244,27 @@ label {
 .site-min-height {
     min-height: 900px;
 }
+.blog-heading {
+    background-color: black;
+    color: #fff;
+    height: 30px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.black-white-color{
+    background-color: black;
+    color: white;
+}
+
+.black-white-color:hover {
+    background-color: black !important;
+    color: white !important;
+}
+
+.black-white-color:focus {
+    background-color: black !important;
+    color: white !important;
+}
 
 
