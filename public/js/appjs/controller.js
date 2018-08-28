@@ -216,7 +216,7 @@ app.controller('BlogsController',
                     break;
                 }
             }
-        }, 200);
+        }, 500);
     });
 app.controller('ShowBlogController',
     function ($log, $stateParams, $scope) {
