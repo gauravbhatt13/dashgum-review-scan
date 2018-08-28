@@ -1,5 +1,5 @@
-var app = angular.module('reviewScan',['angular-d3-word-cloud', 'smart-table', 'ui.router', 'chart.js']);
-app.config(['$httpProvider','$stateProvider', '$urlRouterProvider', function($httpProvider, $stateProvider, $urlRouterProvider) {
+var app = angular.module('reviewScan', ['angular-d3-word-cloud', 'smart-table', 'ui.router', 'chart.js', 'ngResource', 'ngSanitize']);
+app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', function ($httpProvider, $stateProvider, $urlRouterProvider) {
 
     //initialize get if not there
     if (!$httpProvider.defaults.headers.get) {
@@ -19,7 +19,48 @@ app.config(['$httpProvider','$stateProvider', '$urlRouterProvider', function($ht
     var homeState = {
         name: 'home',
         url: '/home',
-        templateUrl: 'input-url.html',
+        templateUrl: 'home.html',
+        controller: 'HomeController',
+        params: {category: null},
+        resolve: {
+            MockData: function (MockDataFactory) {
+                return MockDataFactory.query({filename: 'category'});
+            }
+        }
+    };
+
+    var blogsState = {
+        name: 'blogs',
+        url: '/blogs',
+        templateUrl: 'blogs.html',
+        controller: 'BlogsController',
+        params: {category: null},
+        resolve: {
+            MockData: function (MockDataFactory) {
+                return MockDataFactory.query({filename: 'category'});
+            }
+        }
+    };
+
+    var showBlogState = {
+        name: 'showBlog',
+        url: '/showBlog',
+        params: {blog: null},
+        templateUrl: 'showBlog.html',
+        controller: 'ShowBlogController'
+    };
+
+    var utilState = {
+        name: 'jsonUtil',
+        url: '/jsonUtil',
+        templateUrl: 'jsonUtil.html',
+        controller: 'JsonUtilController'
+    };
+
+    var analyzeState = {
+        name: 'analyze',
+        url: '/analyze',
+        templateUrl: 'review-scan.html',
         controller: 'analyzeCtrl'
     };
 
@@ -46,17 +87,21 @@ app.config(['$httpProvider','$stateProvider', '$urlRouterProvider', function($ht
     $stateProvider.state(homeState);
     $stateProvider.state(scannedState);
     $stateProvider.state(contactState);
+    $stateProvider.state(utilState);
+    $stateProvider.state(analyzeState);
+    $stateProvider.state(blogsState);
+    $stateProvider.state(showBlogState);
     $stateProvider.state(aboutState);
 }]);
 
-app.directive('searchWatchModel',function(){
+app.directive('searchWatchModel', function () {
     return {
-        require:'^stTable',
-        scope:{
-            searchWatchModel:'='
+        require: '^stTable',
+        scope: {
+            searchWatchModel: '='
         },
-        link:function(scope, ele, attr, ctrl){
-            scope.$watch('searchWatchModel',function(val){
+        link: function (scope, ele, attr, ctrl) {
+            scope.$watch('searchWatchModel', function (val) {
                 ctrl.search(val);
             });
 

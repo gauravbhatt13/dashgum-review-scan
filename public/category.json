@@ -1,0 +1,51 @@
+[
+  {
+    "blogCategory": "Data Structures",
+    "image": "assets/img/blogs/data-structure.png",
+    "blogs": [
+      {
+        "blogTitle": "How Bubble Sort works.",
+        "blogDescription": "In Bubble sort we run through a set of elements multiple times and with every pass we try to push the maximum value in the list to the end of the list.",
+        "wordCount": 432,
+        "charCount": 2566,
+        "blogHTML": "<h2>Following are the steps to be taken in bubble sort:</h2><p><br></p><ul><li>For list of numbers A[1], A[2]....A[N], start comparing A[1] with A[2] and arrange them in order so that A[1] &lt; A[2] and continue until we compare A[N-1] with A[N] and arrange them so that A[N-1] &lt; A[N].</li></ul><p><br></p><ul><li>Repeat step 1 with one less comparison. We should stop after we compare A[N-2] with A[N-1]. Note that step 2 will have have N-1 comparisons and after step 2, A[N-1] will be the second largest element.</li></ul><p><br></p><ul><li>Repeat step 1 with two fewer comparisons so that we stop after we compare and arrange A[N-3] and A[N-2].</li></ul><p><br></p><ul><li>....................................</li></ul><p><br></p><ul><li>....................................</li></ul><p><br></p><p>N -1 Compare A[1] with A[2] and arrange them so that A[1] &lt; A[2].</p><p><br></p><p>After N -1 steps, the list will be sorted in the increasing order.</p><p><br></p><h2>Bubble sort example</h2><p><br></p><p>Suppose the following numbers are stored in an array A:</p><p>32, 51, 27, 85, 66, 23, 13, 57</p><p><br></p><p class=\"ql-align-justify\">We apply the bubble sort to the array A. We discuss each pass separately. Pass 1. We have the following comparisons:</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">a.\tCompare\tA1 and\tA2. Since\t32 &lt;\t51, the list is not altered.</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">b.\tCompare\tA2 and\tA3. Since 51 &gt; 27, interchange 51 and 27 as follows:</p><p class=\"ql-align-justify\">32,(27)(51)85, 66, 23, 13, 57</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">c.\tCompare\tA3 and\tA4.\tSince\t51 &lt; 85, the list is not altered.</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">d.\tCompare\tA4 and\tA5.\tSince\t85 &gt;\t66, interchange 85 and 86 as follows:</p><p class=\"ql-align-justify\">32, 27, 51,(66) (85) 23, 13, 57</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">e.\tCompare A5 and A6. Since 85 &gt; 23, interchange 85 and 23 as follows:</p><p class=\"ql-align-justify\">32, 27, 51,66,(23), (85),13, 57</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">f. Compare A6 and A7. Since 85 &gt; 13, interchange 85 and 13 to yield:</p><p class=\"ql-align-justify\">32, 27, 51, 66, 23,(13) ,(85),57</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">g. Compare A7 and A8. Since 85 &gt; 57, interchange 85 and 57 to yield:</p><p class=\"ql-align-justify\">32, 27, 51, 66, 23,13 ,(57),(85)</p><p class=\"ql-align-justify\"><br></p><p>At the end of this first pass, the largest number, 85, has moved to the last</p><p>position However, the rest of the numbers are not sorted, even though some of them</p><p>have changed their positions.</p><p><br></p><p>For the remainder of the passes, we show only the interchanges.</p><p><br></p><p>Pass 2. (27),(33),51,66,23,13,57,85</p><p>27,33,51,(23),(66),13,57,85</p><p>27,33,51,23,(13),(66) 57,85</p><p>27,33,51,23,13,(57),(66),85</p><p><br></p><p>At the end of Pass 2, the second largest number, 66, has moved its way down to the next-to-last position.</p><p><br></p><p>Pass 3. 27, 33,(23),(51),13,57,66,85</p><p>27,33,23,(13),(51),57,66, 85</p><p><br></p><p>Pass 4. 27,(23),(33),13,51,57,66,85</p><p>27,23,(13),(33),51,57,66,85</p><p><br></p><p>Pass 5. (23),(27),13,33,51,57,66,85</p><p>23,(13),(27),33,51,57,66,85</p><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">Pass 6. (13),(23),27,33,51,57,66,85</p><p class=\"ql-align-justify\"><br></p><p>Pass 6 actually has two comparisons, A1 with A2 and A2 and A3. The second comparison does not involve an interchange.</p><p><br></p><p class=\"ql-align-justify\">Pass 7. Finally, A1 is compared with A2. Since 13 &lt; 23, no interchange takes place.</p><p class=\"ql-align-justify\"><br></p>",
+        "dateOfCreation": "2018-07-13T18:36:15.700Z"
+      }
+    ]
+  },
+  {
+    "blogCategory": "Elastic Search",
+    "image": "assets/img/blogs/elasticsearch.png",
+    "blogs": [
+      {
+        "blogTitle": "Top 5 Reasons to use Elastic Search",
+        "blogDescription": "Find out the how Elastic Search is useful.",
+        "wordCount": 291,
+        "charCount": 1830,
+        "blogHTML": "<h2><strong>Scalability</strong></h2><p><br></p><p>Teams favor Elasticsearch because it is a distributed system by nature and can easily scale horizontally providing the ability to extend resources and balance the loading between the nodes in a cluster. It also replicates the data automatically to prevent data loss in case of server node failure.</p><p><br></p><h2><strong>Speed</strong></h2><p>Elasticsearch is able to execute complex queries extremely fast. It also caches almost all of the structured queries commonly used as a filter for the result set and executes them only once. For every other request which contains a cached filter, it checks the result from the cache. This saves the time parsing and executing the query improving the speed.</p><p><br></p><h2><strong>Query Fine Tuning</strong></h2><p>Elasticsearch has a powerful JSON-based DSL (domain specific language), which allows development teams the ability to construct complex queries and fine tune them to receive the most precise results from a search. It provides also a way of ranking and grouping results.</p><p>Teams with a deep understanding of business needs and user perspective, can hone queries so the most relevant results always appear at the top of the result set. This way, build teams can ensure users always find what they’re looking for on page 1 between the first displayed results.</p><p><br></p><h2><strong>Data Types</strong></h2><p>Elasticsearch provides support for all commonly-used data types such as:</p><p><strong>➔&nbsp;</strong>Text:&nbsp;<em>string (can be of both structured and unstructured data)</em></p><p><strong>➔&nbsp;</strong>Numbers:&nbsp;<em>long, integer, short, byte, double, float</em></p><p><strong>➔&nbsp;</strong>Dates:&nbsp;<em>date</em></p><p>Elasticsearch also provides support for complex types such as: arrays, objects, nested types, geo data types, iPV4 and others. Click here for a&nbsp;<a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/2.4/mapping-types.html\" target=\"_blank\" style=\"color: rgb(43, 109, 173);\">complete</a>&nbsp;list.</p><p><br></p><h2><strong>Plugins</strong></h2><p>Elasticsearch offers a variety of useful plugins to boost capabilities. Plugins provide richer analysis to understand your data and explore it. They also provide additional security functionality.</p>",
+        "dateOfCreation": "2018-08-10T00:38:25.829Z"
+      }
+    ]
+  },
+  {
+    "blogCategory": "Machine Learning",
+    "image": "assets/img/blogs/ML.png",
+    "blogs": [
+      {
+        "blogTitle": "What is Machine Learning.",
+        "blogDescription": "The basic concept of machine learning.",
+        "wordCount": 0,
+        "charCount": 0,
+        "blogHTML": "<h2>What is Machine Learning</h2>",
+        "dateOfCreation": "2018-07-13T18:36:15.700Z"
+      }
+    ]
+  },
+  {
+    "blogCategory": "Software Architecture and Design",
+    "image": "assets/img/blogs/software-architecture-and-design.jpg",
+    "blogs": [
+      {"blogTitle":"Enterprise Architect Role","blogDescription":"What is the role of an Architect?","wordCount":188,"charCount":1360,"blogHTML":"<h1>Key Responsibilities and Challenges</h1><p>•\tEnsure that a company's IT strategy and business goals are aligned</p><p>•\tActively involved with the design, maintenance and continual improvement of the company's architecture at an enterprise level</p><p>•\tDevelopment of IT standards and policies within the company</p><p>•\tRisk management &amp; impact assessment of the architecture</p><p>•\tIdentifying Disruptive Technology</p><p><br></p><h1>Business Requirements</h1><p><br></p><p>Requirements state what the stakeholders want the system to achieve.</p><p><br></p><p>We can classify requirements into three different types:</p><p><br></p><p>•\tVision: requirements for the future direction of the system.</p><p>•\tFunctional Requirements: what a system needs to be able to 'do'</p><p>•\tPerformance Requirements: the performance levels that the stakeholders want the system to achieve</p><p><br></p><h1>Identifying business requirements</h1><p>•\tWhat are the business' core objectives?</p><p>•\tGood communication with stakeholders</p><p>•\tDifferent stakeholders may sometimes have different priorities and business requirements\t</p><p>•\tClear prioritization</p><p>•\tCompetitors</p><p>•\tLegislation</p><p><br></p><p><br></p><h1>Key Quality Attributes </h1><h2><br></h2><h2>Business</h2><p>•\tAdaptability</p><p>•\tExtensibility</p><p>•\tCompliance</p><p>•\tUsability</p><p><br></p><h2>Security</h2><p>•\tConfidentiality</p><p>•\tIntegrity</p><p>•\tAvailability</p><p>•\tAccountability</p><p><br></p><h2>Performance</h2><p>•\tScalability</p><p>•\tResponsiveness</p><p>•\tThroughput</p><p><br></p><h2>Data &amp; Configuration</h2><p>•\tInteroperability</p><p>•\tDurability</p><p><br></p><h2>Other Quality attributes</h2><p>•\tMonitorability</p><p>•\tTestability</p>","dateOfCreation":"2018-08-25T00:08:52.692Z"}
+    ]
+  }
+]

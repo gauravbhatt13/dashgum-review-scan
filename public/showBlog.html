@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>{{blog.blogTitle}}</h1>
+      <p>{{blog.parsedDate}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" id="html-bind">
+      <ng-bind-html
+        ng-bind-html="blog.blogHTML">
+      </ng-bind-html>
+    </div>
+  </div>
+</div>

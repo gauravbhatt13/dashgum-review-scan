@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install",
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -11,6 +10,8 @@
     "angular": "^1.7.0",
     "angular-chart.js": "^1.1.1",
     "angular-d3-word-cloud": "^0.5.3",
+    "angular-resource": "^1.7.3",
+    "angular-sanitize": "^1.7.3",
     "angular-smart-table": "^2.1.11",
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",

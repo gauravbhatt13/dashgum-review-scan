@@ -425,6 +425,8 @@ ul.sidebar-menu li a.active i {
     padding-bottom: 15px;
     padding-top: 0px;
     width: 100%;
+    height: 650px;
+    overflow-y: auto;
 }
 
 a.logo {
@@ -2216,7 +2218,6 @@ label {
 
 /*footer*/
 .site-footer {
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;

@@ -19,6 +19,17 @@ var banner = ['/*!\n',
 
 // Copy third party libraries from /node_modules into./public/vendor
 gulp.task('vendor', function () {
+    //Angular Sanitize
+    gulp.src([
+        './node_modules/angular-sanitize/angular-sanitize.js'
+    ])
+        .pipe(gulp.dest('./public/vendor/angular-sanitize'))
+    //Angular Resource
+    gulp.src([
+        './node_modules/angular-resource/angular-resource.js'
+    ])
+        .pipe(gulp.dest('./public/vendor/angular-resource'))
+
     //Angular chart
     gulp.src([
         './node_modules/angular-chart.js/dist/angular-chart.js'

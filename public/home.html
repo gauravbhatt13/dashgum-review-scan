@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Blogs</h1>
+    <div class="row">
+        <div class="col-md-4" ng-repeat="item in data">
+
+            <div class="card">
+                <div>
+                    <img class="img-fluid center-block" ng-src="{{item.image}}">
+                </div>
+                <div style="text-align: center">
+
+                    <button class="btn btn-link" ng-click="gotoBlogs(item)">
+                        {{item.blogCategory}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

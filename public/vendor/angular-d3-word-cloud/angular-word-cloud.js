@@ -72,7 +72,7 @@
                })
                .on('mouseover', function (d) { //zoom in font-size
                   if (self.useTooltip) {
-                     tooltip.style('font-size', '20px').style('visibility', 'visible').text(d.tooltipText || d.text);
+                     tooltip.style('font-size', d.size + 'px').style('visibility', 'visible').text(d.tooltipText || d.text);
                   }
                   if (self.useTransition) {
                      d3.select(this).transition().style('font-size', function (d) {

@@ -36,7 +36,6 @@ app.service('contactService', function ($http, $q) {
     this.submitContact = function (contact) {
         var deferred = $q.defer();
         var contactResponse = undefined;
-
         $http({
             method: 'POST',
             url: '/users/contact',
@@ -50,4 +49,12 @@ app.service('contactService', function ($http, $q) {
         contactResponse = deferred.promise;
         return $q.when(contactResponse);
     };
+});
+
+app.factory('MockDataFactory', function ($resource) {
+
+    return $resource(':filename.json', {
+        filename: '@filename'
+    }, {headers: { 'Cache-Control': 'no-store' }});
+
 });

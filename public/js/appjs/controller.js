@@ -64,7 +64,7 @@ app.controller('scannedCtrl', function ($scope, analyzeService) {
     var positive = 0;
 
     analyzedData.reviews.forEach(function (review) {
-        if(review.score > 0){
+        if (review.score > 0) {
             positive++;
         }
     });
@@ -72,16 +72,123 @@ app.controller('scannedCtrl', function ($scope, analyzeService) {
 
     $scope.chartData = [positive, analyzedData.reviews.length - positive];
 
-    $scope.resetFilter = function(){
+    $scope.resetFilter = function () {
         $scope.query = '';
     };
-    $scope.wordClicked = function(word) {
+    $scope.wordClicked = function (word) {
         $scope.$apply(function () {
             $scope.query = word.text;
         });
     }
 });
+app.controller('JsonUtilController', function ($scope, $http) {
+    $scope.jsonTxt = '';
+    $scope.errorTxt = '';
+    $scope.elementFlatArray = [];
+    $scope.esAddress = 'http://localhost:9201';
+    $scope.indexData = {};
+    $scope.indexName = 'myindex';
+    $scope.indexType = 'mytype';
+    $scope.searchValues = '';
+    $scope.errorModal = false;
 
+    $scope.flatJson = function () {
+        $scope.elementFlatArray = [];
+        $scope.indexData = {};
+        if ($scope.jsonTxt === '') {
+            return;
+        }
+        var jsonObj = JSON.parse($scope.jsonTxt);
+        $scope.flatObject(jsonObj, '');
+        // $scope.elementFlatArray = $scope.elementFlatArray.splice(0,200);
+    };
+
+    $scope.formatJson = function () {
+        if ($scope.jsonTxt === '') {
+            return;
+        }
+
+        try {
+            var jsonObj = JSON.parse($scope.jsonTxt);
+            $scope.jsonTxt = JSON.stringify(jsonObj, null, 4);
+        } catch (err) {
+            $scope.errorModal = true;
+            var textArea = angular.copy($scope.jsonTxt);
+            var index = err.message.search('position');
+            var errPosition = err.message.substring((index + 8), (index + 11)).trim();
+            $scope.errorTxt = err.message + ' : ' + textArea.substring(errPosition, errPosition + 10);
+        }
+    };
+
+    $scope.flatObject = function (element, path) {
+        for (var k in element) {
+            if (typeof element[k] === 'object' && element[k] !== null) {
+                var x = path + k + '.';
+                $scope.flatObject(element[k], x);
+            } else {
+                if (!(element[k] === '' || element[k] === null)) {
+                    $scope.elementFlatArray.push((path === '' ? {
+                        selected: true,
+                        key: k,
+                        value: element[k]
+                    } : {selected: true, key: path + k, value: element[k]}));
+                }
+            }
+        }
+    };
+
+    $scope.toggleAll = function (state) {
+        $scope.elementFlatArray.forEach(function (elem) {
+            elem.selected = state;
+        });
+    }
+
+    $scope.createIndex = function () {
+        $scope.elementFlatArray.forEach(function (elem) {
+            console.log(elem.key + ' : ' + elem.value);
+            if (elem.value !== null) {
+                $scope.indexData[elem.key] = elem.value;
+            }
+        });
+        var jsonData = angular.toJson($scope.indexData);
+        var httpRequest = {
+            method: 'POST',
+            url: $scope.esAddress + '/' + $scope.indexName + '/' + $scope.indexType,
+            data: jsonData
+        };
+        $http(httpRequest).then(function successCallback(response) {
+            console.log(response);
+        }, function errorCallback(error) {
+            console.log(error);
+        });
+    };
+
+    $scope.isCORSEnabled = function () {
+        var httpRequest = {
+            method: 'HEAD',
+            url: $scope.esAddress + '/' + $scope.indexName + '/' + $scope.indexType,
+            data: jsonData
+        };
+    };
+
+    $scope.file_changed = function (element) {
+        var file = element.files[0];
+        var reader = new FileReader();
+        reader.onload = function (event) {
+            $scope.jsonTxt = event.target.result;
+            $scope.$apply();
+        };
+        reader.readAsText(file);
+    };
+});
+
+app.controller('HomeController',
+    function ($log, MockData, $scope, $state) {
+        $scope.data = MockData;
+        $scope.gotoBlogs = function (item) {
+            $state.go('blogs', {category: item.blogCategory});
+        };
+    });
 app.controller('contactCtrl', function ($scope, contactService) {
     $scope.contact = {};
     $scope.success = false;
@@ -93,3 +200,29 @@ app.controller('contactCtrl', function ($scope, contactService) {
         });
     };
 });
+app.controller('BlogsController',
+    function ($log, MockData, $stateParams, $scope, $state) {
+        $scope.category = $stateParams.category;
+        $scope.gotoBlog = function(blog) {
+            console.log(blog);
+            $state.go('showBlog', {blog:blog})
+        };
+        setTimeout(function () {
+            for (var key in MockData) {
+                console.log('for key : ' + key + ' : ' + MockData[key].blogCategory + ' === ' + $scope.category);
+                if (MockData[key].blogCategory === $scope.category) {
+                    $scope.data = MockData[key].blogs;
+                    $scope.$apply();
+                    break;
+                }
+            }
+        }, 200);
+    });
+app.controller('ShowBlogController',
+    function ($log, $stateParams, $scope) {
+        setTimeout(function () {
+            $scope.blog = $stateParams.blog;
+            console.log($scope.blog);
+            $scope.$apply();
+        }, 200);
+    });
