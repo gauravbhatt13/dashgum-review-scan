@@ -222,3 +222,41 @@ app.controller('ShowBlogController',
     function ($log, $stateParams, $scope) {
         $scope.blog = $stateParams.blog;
     });
+
+app.controller('CreateBlogController',
+    function ($log, $scope, MockData, FileSaver, Blob) {
+        $scope.categories = [];
+        $scope.model = {};
+        for (var key in MockData) {
+            if (MockData[key].blogCategory !== undefined) {
+                $scope.categories.push(MockData[key].blogCategory);
+            }
+        }
+
+        $scope.blogCallback = function (editor) {
+            editor.on('text-change', function () {
+                var wordCharCounter = getWordAndCharCount(editor.getText());
+                $scope.model.wordCount = wordCharCounter.wordCount;
+                $scope.model.charCount = wordCharCounter.charCount;
+            });
+        };
+
+        $scope.save = function () {
+            $scope.model.dateOfCreation = new Date();
+            var data = new Blob([JSON.stringify($scope.model)], { type: 'text/plain;charset=utf-8' });
+            FileSaver.saveAs(data, 'blog.json');
+        };
+
+        var getWordAndCharCount = function (text) {
+            var regex = /\s+/gi;
+            var wordCount = text.trim().replace(regex, ' ').split(' ').length;
+            var totalChars = text.length;
+            var charCount = text.trim().length;
+            var charCountNoSpace = text.replace(regex, '').length;
+            return {
+                wordCount: wordCount,
+                charCount: charCount,
+                charCountNoSpace: charCountNoSpace
+            };
+        };
+    });

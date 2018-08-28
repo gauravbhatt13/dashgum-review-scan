@@ -7,13 +7,18 @@
           <legend>JSON DATA</legend>
           <div class="form-group">
             <textarea id="jsonTxt" class="form-control" ng-model="jsonTxt" rows="25"></textarea><br/>
-            <button class="btn btn-primary" ng-click="flatJson()" data-toggle="modal" data-target="#flatModal">
-              <label>Flat</label></button>
-            <button class="btn btn-primary" ng-click="formatJson()" data-toggle="modal" data-target="#errorModal">
-              <label>Format</label></button>
+            <div class="pull-right">
+              <button class="btn btn-primary" ng-click="flatJson()" data-toggle="modal" data-target="#flatModal">
+                <label>Flat</label>
+              </button>
+              <button class="btn btn-primary" ng-click="formatJson()" data-toggle="modal" data-target="#errorModal">
+                <label>Format</label>
+              </button>
+            </div>
+            <input style="display: inline-block" type="file" onchange="angular.element(this).scope().file_changed(this)"/>
           </div>
           <div class="form-group">
-            <input type="file" onchange="angular.element(this).scope().file_changed(this)"/>
+
           </div>
         </fieldset>
       </form>

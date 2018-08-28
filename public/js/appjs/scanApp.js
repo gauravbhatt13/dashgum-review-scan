@@ -1,4 +1,5 @@
-var app = angular.module('reviewScan', ['angular-d3-word-cloud', 'smart-table', 'ui.router', 'chart.js', 'ngResource', 'ngSanitize']);
+var app = angular.module('reviewScan', ['angular-d3-word-cloud', 'smart-table', 'ui.router', 'chart.js', 'ngResource', 'ngSanitize', 'ngQuill',
+    'ngFileSaver']);
 app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', function ($httpProvider, $stateProvider, $urlRouterProvider) {
 
     //initialize get if not there
@@ -50,6 +51,19 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', function ($
         controller: 'ShowBlogController'
     };
 
+    var createBlogState = {
+        name: 'createBlog',
+        url: '/createBlog',
+        params: {blog: null},
+        templateUrl: 'createBlog.html',
+        resolve: {
+            MockData: function (MockDataFactory) {
+                return MockDataFactory.query({filename: 'category'});
+            }
+        },
+        controller: 'CreateBlogController'
+    };
+
     var utilState = {
         name: 'jsonUtil',
         url: '/jsonUtil',
@@ -91,6 +105,7 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', function ($
     $stateProvider.state(analyzeState);
     $stateProvider.state(blogsState);
     $stateProvider.state(showBlogState);
+    $stateProvider.state(createBlogState);
     $stateProvider.state(aboutState);
 }]);
 
