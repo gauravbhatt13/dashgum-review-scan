@@ -3,10 +3,30 @@
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }*/
 
-.navbar-inverse .navbar-brand{
+.navbar-inverse, .navbar-brand{
+  background-color: #2C3E50;
   color: #f9f9f9;
 }
 
 .navbar-inverse .navbar-nav > li > a{
   color: #e9f0f4;
+}
+
+#main-content {
+  background-color: #18BC9C;
+}
+
+.wrapper{
+  height: 100vh !important;
+}
+.black-white-color{
+  background-color: #2C3E50 !important;
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width: 100%;
+  background-color: #2C3E50 !important;
 }

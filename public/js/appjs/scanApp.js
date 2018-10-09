@@ -15,7 +15,7 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', function ($
     // extra
     $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
     $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/analyze');
 
     var homeState = {
         name: 'home',
