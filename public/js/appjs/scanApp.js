@@ -123,3 +123,25 @@ app.directive('searchWatchModel', function () {
         }
     };
 });
+
+app.directive('upload', [function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+
+            element.on('dragover', function(e) {
+                e.preventDefault();
+                return false;
+            });
+
+            element.on('drop', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.originalEvent.dataTransfer.items[0].getAsString(function(url){
+                    scope.url = url;
+                    scope.scan();
+                });
+            });
+        }
+    };
+}]);
