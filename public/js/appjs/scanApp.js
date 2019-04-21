@@ -17,60 +17,6 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', function ($
     $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
     $urlRouterProvider.otherwise('/analyze');
 
-    var homeState = {
-        name: 'home',
-        url: '/home',
-        templateUrl: 'home.html',
-        controller: 'HomeController',
-        params: {category: null},
-        resolve: {
-            MockData: function (MockDataFactory) {
-                return MockDataFactory.query({filename: 'category'});
-            }
-        }
-    };
-
-    var blogsState = {
-        name: 'blogs',
-        url: '/blogs',
-        templateUrl: 'blogs.html',
-        controller: 'BlogsController',
-        params: {category: null},
-        resolve: {
-            MockData: function (MockDataFactory) {
-                return MockDataFactory.query({filename: 'category'});
-            }
-        }
-    };
-
-    var showBlogState = {
-        name: 'showBlog',
-        url: '/showBlog',
-        params: {blog: null},
-        templateUrl: 'showBlog.html',
-        controller: 'ShowBlogController'
-    };
-
-    var createBlogState = {
-        name: 'createBlog',
-        url: '/createBlog',
-        params: {blog: null},
-        templateUrl: 'createBlog.html',
-        resolve: {
-            MockData: function (MockDataFactory) {
-                return MockDataFactory.query({filename: 'category'});
-            }
-        },
-        controller: 'CreateBlogController'
-    };
-
-    var utilState = {
-        name: 'jsonUtil',
-        url: '/jsonUtil',
-        templateUrl: 'jsonUtil.html',
-        controller: 'JsonUtilController'
-    };
-
     var analyzeState = {
         name: 'analyze',
         url: '/analyze',
@@ -91,22 +37,9 @@ app.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', function ($
         templateUrl: 'contact.html',
         controller: 'contactCtrl'
     };
-
-    var aboutState = {
-        name: 'about',
-        url: '/about',
-        templateUrl: 'about.html'
-    };
-
-    $stateProvider.state(homeState);
     $stateProvider.state(scannedState);
     $stateProvider.state(contactState);
-    $stateProvider.state(utilState);
     $stateProvider.state(analyzeState);
-    $stateProvider.state(blogsState);
-    $stateProvider.state(showBlogState);
-    $stateProvider.state(createBlogState);
-    $stateProvider.state(aboutState);
 }]);
 
 app.directive('searchWatchModel', function () {
