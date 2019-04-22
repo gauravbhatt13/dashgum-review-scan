@@ -46,6 +46,7 @@
                 <table search-watch-model="query" st-table="reviewCollectionDisplay" st-safe-src="reviewCollection" class="table table-striped">
                     <thead>
                     <tr>
+                        <th>#</th>
                         <th>Title</th>
                         <th>Comment</th>
                     </tr>
@@ -53,14 +54,16 @@
                     <tbody>
                     <tr>
                         <td></td>
+                        <td></td>
                         <td>
                             <button ng-click="goHome();" type="button" style="margin-left:10px;" class="btn btn-round btn-primary black-white-color pull-right">Home</button>
-                            <button ng-click="resetFilter();" type="button" class="btn btn-round btn-primary black-white-color pull-right">Reset</button>
+                            <button ng-click="resetFilter();" type="button" style="margin-left:10px;" class="btn btn-round btn-primary black-white-color pull-right">Reset</button>
                         </td>
                     </tr>
                     </tbody>
                     <tbody>
                     <tr ng-repeat="row in reviewCollectionDisplay">
+                        <td>{{$index + 1}}</td>
                         <td>{{row.title}}</td>
                         <td>{{row.comment}}</td>
                     </tr>
