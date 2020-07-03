@@ -80,8 +80,8 @@ var handleFewReviews = function (req, res) {
     request(req.body.url, {gzip: true}, function (error, response, html) {
         if (!error && response.statusCode == 200) {
             var $ = cheerio.load(html);
-            if ($('a[data-hook="see-all-reviews-link"]').attr('href') != undefined) {
-                var allReviews = baseUrl + $('a[data-hook="see-all-reviews-link"]').attr('href');
+            if ($('a[data-hook="see-all-reviews-link-foot"]').attr('href') != undefined) {
+                var allReviews = baseUrl + $('a[data-hook="see-all-reviews-link-foot"]').attr('href');
                 triggerSearch(baseUrl, allReviews, res, callback);
             } else {
                 res.send(responseData);
