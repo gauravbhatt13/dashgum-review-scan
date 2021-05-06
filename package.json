@@ -27,7 +27,7 @@
     "request": "^2.86.0",
     "sentiment": "^5.0.0",
     "stopword": "^0.1.10",
-    "underscore": "^1.9.0"
+    "underscore": "^1.12.1"
   },
   "devDependencies": {
     "browser-sync": "2.24.3",
